@@ -1,0 +1,23 @@
+{
+  "name": "chat-app",
+  "authors": [
+    "Valentyn Pirhach <valentin.pirgach@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "bower_components",
+    "vendor/assets/bower_components"
+  ],
+  "dependencies": {
+    "angular": "^1.6.6",
+    "ng-token-auth": "^0.0.30",
+    "angular-ui-router": "^1.0.6",
+    "angular-route": "^1.6.6"
+  },
+  "resolutions": {
+    "angular": "1.6.6",
+    "angular-cookie": "4.1.0"
+  },
+  "devDependencies": {}
+}

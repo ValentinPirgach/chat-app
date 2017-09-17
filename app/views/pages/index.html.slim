@@ -1,0 +1,11 @@
+doctype html
+html lang="en" ng-app="chat"
+  head
+    title ChatApp
+
+    = stylesheet_link_tag 'application', media: 'all'
+
+  body
+
+    div(ng-view)
+    = javascript_include_tag 'application'
