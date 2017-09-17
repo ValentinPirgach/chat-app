@@ -1,7 +1,11 @@
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
+  # Include default devise modules.
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+          :recoverable, :rememberable, :trackable, :validatable
 
+  include DeviseTokenAuth::Concerns::User
+
+  has_many :conversations
+
+  scope :all_except, -> (user) { where.not(id: user) }
 end

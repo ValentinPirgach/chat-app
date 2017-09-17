@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="col-md-4 conv-column users-list">
+    <div class="user-item row"
+         ng-click="conv.activate(user)"
+         ng-repeat="user in conv.users"
+         ng-class="{'active': user.active}">
+      {{user.email}}
+    </div>
+  </div>
+  <div class="col-md-8 conv-column">
+    messages
+  </div>
+</div>

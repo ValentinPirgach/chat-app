@@ -1,0 +1,27 @@
+conversations
+  padding: 50px
+
+  .conv-column
+    min-height: 100vh
+
+    &:first-child
+      border-right: 1px #eaeaea solid
+
+  .users-list
+    position: relative
+    overflow: auto
+
+  .user-item
+    padding: 20px
+    padding: 10px 20px
+    font-size: 18px
+    cursor: pointer
+
+    &.active
+      background: rgba(188, 255, 180, 0.64)
+
+    &:hover
+      background: rgba(235, 235, 235, 0.75)
+
+    &:not(:last-child)
+      border-bottom: 1px #eaeaea solid
