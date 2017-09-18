@@ -1,10 +1,30 @@
 <div class="container">
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">Chat App</a>
+      </div>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#">Hello, {{conv.current_user.email}}</a></li>
+        <li>
+          <button type="submit" class="btn btn-default navbar-btn" ng-click="conv.logout()">Logout</button>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</div>
+
+<div class="container">
   <div class="col-md-4 conv-column users-list">
+    <div class="info-text" ng-if="conv.users.length == 0 && !conv.userLoading">There are no available users to start conversation with them</div>
+
     <div class="user-item row"
          ng-click="conv.activate(user)"
          ng-repeat="user in conv.users track by $index"
          ng-class="{'active': user.active}">
-      {{user.email}}
+      <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+      <span>{{user.email}}</span>
     </div>
   </div>
   <div class="col-md-8 conv-column message-list">

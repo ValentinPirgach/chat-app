@@ -7,8 +7,12 @@ messages
     display: flex
     flex-flow: column nowrap
     justify-content: flex-end
-    height: calc(100% - 70px)
-    overflow: auto
+
+    &-wrapper
+      position: relative
+      height: calc(100% - 70px)
+      padding: 0 20px
+      overflow: auto
 
   textarea.form-control,
   button[type='submit']
@@ -22,11 +26,23 @@ messages
     width: 100%
     border-top: 1px #eaeaea solid
 
+  .show-more
+    text-align: center
+    padding: 10px
+    border-top: 1px #eaeaea solid
+    border-bottom: 1px #eaeaea solid
+    cursor: pointer
+
+    &:hover
+      text-decoration: none
+      background: #f8f8f8
+
   .message-item
     position: relative
     width: 60%
     padding: 10px 20px
     background: #79c2e4
+    border: 1px #4488a7 solid
     border-radius: 10px 10px 10px 10px
     margin: 20px 0
 
@@ -42,6 +58,7 @@ messages
       align-self: flex-end
       text-align: right
       background: #66e4c7
+      border: 1px #55b9a2 solid
 
       .message-time
         float: left

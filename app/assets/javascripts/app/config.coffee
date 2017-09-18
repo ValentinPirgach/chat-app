@@ -24,7 +24,8 @@ app.config ['$stateProvider', '$urlRouterProvider', '$locationProvider'
         abstract: true
         template: '<conversations></conversations>'
         resolve:
-          auth: ['$auth', ($auth) ->
+          auth: ['$auth', '$state', ($auth, $state) ->
+            $state.go('login') if $auth.validateUser().$$state.status == 2
             return $auth.validateUser()
           ]
 

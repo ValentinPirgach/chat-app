@@ -15,9 +15,13 @@
 //= require angular-cookie
 //= require ng-token-auth
 //= require angular-ui-router
+//= require action_cable
+//= require angular-websocket
+//= require angular-actioncable
 //= require jquery_ujs
 //= require moment
 //= require bootstrap-sprockets
 //= require ./app/app
 //= require ./app/config
+
 //= require_tree ./app/components/

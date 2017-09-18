@@ -1,7 +1,9 @@
-<div class="messages">
-  <div class="message-item" ng-class="{'myself': message.user_id == messages.current_user.id}" ng-repeat="message in messages.messages">
-    <div class="message-body">{{message.body}}</div>
-    <div class="message-time">{{messages.formatTime(message.created_at)}}</div>
+<div class="messages-wrapper" scroll-down-on-change>
+  <div class="messages">
+    <div class="message-item" ng-class="{'myself': message.user_id == messages.current_user.id}" ng-repeat="message in messages.messages.messages | orderBy: 'id' track by $index">
+      <div class="message-body">{{message.body}}</div>
+      <div class="message-time">{{messages.formatTime(message.created_at)}}</div>
+    </div>
   </div>
 </div>
 

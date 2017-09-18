@@ -5,25 +5,24 @@ class MessagesController < ApplicationController
   def index
     @messages = @conversation.messages
 
-    if @messages.last
-      if @messages.last.user_id != current_user.id
-        @messages.last.read = true;
-      end
-    end
-
     respond_to do |format|
-      format.json { render json: @messages }
+      format.json { render json: {messages: @messages, total: @conversation.messages.count} }
     end
   end
 
 
   def create
+    @messages = @conversation.messages[0..10]
     @message = @conversation.messages.new(message_params)
+
     if @message.save
+      ActionCable.server.broadcast "conversation_channel_#{@conversation.id}", @message
+
       respond_to do |format|
         format.json { render json: @message }
       end
     end
+
   end
 
   private
