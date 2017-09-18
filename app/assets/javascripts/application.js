@@ -14,8 +14,9 @@
 //= require angular
 //= require angular-cookie
 //= require ng-token-auth
-//= require angular-route
+//= require angular-ui-router
 //= require jquery_ujs
+//= require moment
 //= require bootstrap-sprockets
 //= require ./app/app
 //= require ./app/config

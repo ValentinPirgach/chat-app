@@ -1,0 +1,15 @@
+<div class="messages">
+  <div class="message-item" ng-class="{'myself': message.user_id == messages.current_user.id}" ng-repeat="message in messages.messages">
+    <div class="message-body">{{message.body}}</div>
+    <div class="message-time">{{messages.formatTime(message.created_at)}}</div>
+  </div>
+</div>
+
+<form name="message" class="form-inline send-message-form" ng-submit="messages.sendMessage()">
+  <div class="col-md-9">
+    <textarea class="form-control" name="body" placeholder="Enter your message" rows="2" ng-model="messages.new_message.body" required></textarea>
+  </div>
+  <div class="col-md-3">
+    <button type="submit" ng-disabled="message.$invalid" class="btn btn-primary">Send</button>
+  </div>
+</form>

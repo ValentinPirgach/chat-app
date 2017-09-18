@@ -1,6 +1,8 @@
 class SignupController
-  constructor: ($auth) ->
+  constructor: ($auth, $state) ->
     @authService = $auth
+    @state = $state
+
     @user =
       name: ''
       email: ''
@@ -15,11 +17,11 @@ class SignupController
 
     @authService.submitRegistration @user
       .then (resp) =>
-        $location.url('/conversations')
+        self.state.go('conversations.index')
       .catch (error) =>
         self.errorMessage = error?.data?.errors?.full_messages[0]
 
-SignupController.$inject = ['$auth']
+SignupController.$inject = ['$auth', '$state']
 
 app
   .component 'signup',

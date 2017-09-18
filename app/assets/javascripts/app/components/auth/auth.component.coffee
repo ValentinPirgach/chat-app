@@ -1,12 +1,11 @@
 class AuthController
-  constructor: ($auth) ->
+  constructor: ($auth, $state) ->
     @$authService = $auth
+    @state = $state
+
     @loginForm =
       email: ''
       password: ''
-
-  $onInit: () ->
-    console.log 'init user'
 
   login: (event) ->
     event.preventDefault
@@ -15,9 +14,9 @@ class AuthController
 
     @$authService.submitLogin @loginForm
       .then (resp) ->
-        $location.url('/conversations')
+        self.state.go('conversations.index')
       .catch (error) ->
-        self.errorMessage = error.data.errors.full_messages[0]
+        self.errorMessage = error.errors[0] if error.errors[0]
 
 app
   .component 'auth',

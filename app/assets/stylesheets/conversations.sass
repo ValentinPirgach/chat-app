@@ -1,15 +1,23 @@
 conversations
-  padding: 50px
-
   .conv-column
-    min-height: 100vh
+    position: relative
+    height: 100vh
+    padding: 50px
 
     &:first-child
       border-right: 1px #eaeaea solid
 
+  ui-view
+    display: block
+    height: 100%
+
   .users-list
     position: relative
     overflow: auto
+
+  .message-list
+    position: relative
+    padding-bottom: 20px
 
   .user-item
     padding: 20px
@@ -20,8 +28,20 @@ conversations
     &.active
       background: rgba(188, 255, 180, 0.64)
 
+    &:active
+      background: rgba(188, 255, 180, 0.8)
+
     &:hover
       background: rgba(235, 235, 235, 0.75)
 
     &:not(:last-child)
       border-bottom: 1px #eaeaea solid
+
+  .info-text
+    position: absolute
+    text-align: center
+    top: 50%
+    width: 100%
+    margin-top: -10px
+    color: #ccc
+    font-size: 18px

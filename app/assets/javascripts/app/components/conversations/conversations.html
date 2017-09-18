@@ -2,12 +2,12 @@
   <div class="col-md-4 conv-column users-list">
     <div class="user-item row"
          ng-click="conv.activate(user)"
-         ng-repeat="user in conv.users"
+         ng-repeat="user in conv.users track by $index"
          ng-class="{'active': user.active}">
       {{user.email}}
     </div>
   </div>
-  <div class="col-md-8 conv-column">
-    messages
+  <div class="col-md-8 conv-column message-list">
+    <ui-view></ui-view>
   </div>
 </div>

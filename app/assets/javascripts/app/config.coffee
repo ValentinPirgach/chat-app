@@ -8,15 +8,38 @@ app.config ['$httpProvider', ($httpProvider) ->
     return
 ]
 
-app.config ['$locationProvider', '$routeProvider',
-  ($locationProvider, $routeProvider) ->
-    $locationProvider.hashPrefix ''
+app.config ['$stateProvider', '$urlRouterProvider', '$locationProvider'
+  ($stateProvider, $urlRouterProvider, $locationProvider) ->
+    $locationProvider.hashPrefix('');
+    $urlRouterProvider.otherwise('/conversations');
 
-    $routeProvider
-      .when '/login',
+    $stateProvider
+      .state 'login',
+        url: '/login'
         template: '<auth></auth>'
-      .when '/signup',
+      .state 'signup',
+        url: '/signup'
         template: '<signup></signup>'
-      .when '/conversations',
+      .state 'conversations',
+        abstract: true
         template: '<conversations></conversations>'
+        resolve:
+          auth: ['$auth', ($auth) ->
+            return $auth.validateUser()
+          ]
+
+      .state 'conversations.index',
+        url: '/conversations'
+        template: '<div class="info-text">Please select contact to start converstation</div>'
+      .state 'conversations.recipient',
+        url: '/conversations/recipient/:recipient_id/conversation/:conversation_id'
+        template: '<messages></messages>'
+
+      # .when '/signup',
+      #   template: '<signup></signup>'
+      # .when '/conversations',
+      #   template: '<conversations></conversations>'
+      # .when '/conversations/:recipient_id',
+      #   template: '<conversations></conversations>',
+      #   reloadOnSearch: no
 ]
